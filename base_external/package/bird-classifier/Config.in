@@ -1,0 +1,7 @@
+config BR2_PACKAGE_BIRD_CLASSIFIER
+	bool "bird-classifier"
+	help
+	  Kernel module for the AviAlert bird classification 
+	  system to interface with RPi4 GPIO.
+	  
+	  https://github.com/cu-ecen-aeld/final-project-shrutikalyankar
