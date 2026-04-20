@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_LIBROSA
+	bool "python-librosa"
+	select BR2_PACKAGE_PYTHON3 # Add dependencies here (numpy, scipy, etc.)
+	help
+	  Librosa library for audio analysis.

@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_NUMPY_PREV_VERSION
+	bool "python-numpy-prev-version"
+	depends on BR2_PACKAGE_PYTHON3
+	help
+	  NumPy is the fundamental package for scientific computing
+	  with Python.
+
+	  https://numpy.org/

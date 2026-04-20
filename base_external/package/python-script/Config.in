@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PYTHON_SCRIPT
+	bool "python-script"
+	help
+	  Python scripts for microphone testing and bird classification 
+	  integration.

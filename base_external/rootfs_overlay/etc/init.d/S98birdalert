@@ -1,35 +1,37 @@
 #!/bin/sh
-
+#
+# Startup script for AviAlert
+#
 case "$1" in
   start)
-    echo "Starting Bird Classifier System..."
-    
-    # 1. Load the kernel module
-    # Ensure the path matches where your _INSTALL_TARGET_CMDS put the file
-    # insmod /lib/modules/$(uname -r)/extra/birdclassifier.ko
-    
-    # 2. Wait a moment for /dev/birdclassifier to be created by the kernel
-    # sleep 1
-    
-    # 3. Start the Python script in the background
-    # Use '&' so the boot process doesn't hang waiting for the script
-    python3 /usr/AESD-project/main.py &
+    printf "Starting AviAlert Services: "
+    sleep 5
+    date -s "2026-04-19 10:00:00"
+    depmod -a
+    modprobe snd
+    modprobe snd-pcm
+    modprobe snd-usb-audio
+    modprobe birdclassifier
+    sleep 2
+    # Start WiFi
+    wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
+    sleep 3
+    udhcpc -i wlan0
+    sleep 2
+    python3 /root/python-scripts/main.py > /var/log/avialert.log 2>&1 &
+    echo "OK"
     ;;
   stop)
-    # echo "Stopping Bird Classifier System..."
-    # Kill the python script
-    killall python3
-    # Unload the module
-    # rmmod birdclassifier
+    printf "Stopping AviAlert: "
+    start-stop-daemon -K -q -n python3
+    echo "OK"
     ;;
-  restart)
+  restart|reload)
     $0 stop
-    sleep 1
     $0 start
     ;;
   *)
     echo "Usage: $0 {start|stop|restart}"
     exit 1
 esac
-
 exit 0

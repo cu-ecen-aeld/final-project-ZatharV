@@ -1,2 +1,5 @@
 source "$BR2_EXTERNAL_project_base_PATH/package/aesd-assignments/Config.in"
 source "$BR2_EXTERNAL_project_base_PATH/package/bird-classifier/Config.in"
+source "$BR2_EXTERNAL_project_base_PATH/package/python-script/Config.in"
+source "$BR2_EXTERNAL_project_base_PATH/package/python-librosa/Config.in"
+source "$BR2_EXTERNAL_project_base_PATH/package/python-numpy-prev-version/Config.in"
